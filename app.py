@@ -29,7 +29,7 @@ st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
     
-    /* Grid background like NOTHING's website */
+    /* Grid background */
     .stApp {
         background-color: #f5f5f5;
         background-image: 
@@ -39,13 +39,47 @@ st.markdown("""
         color: #000000;
     }
     
-    /* Sidebar - clean white */
+    /* Sidebar - BLACK like screenshot */
     [data-testid="stSidebar"] {
-        background-color: #ffffff;
-        border-right: 1px solid #e0e0e0;
+        background-color: #1a1a1a !important;
+        border-right: none;
     }
     
-    /* Dot matrix font style */
+    /* Sidebar text - white on black */
+    [data-testid="stSidebar"] * {
+        color: #ffffff !important;
+    }
+    
+    /* Sidebar labels */
+    [data-testid="stSidebar"] label {
+        font-family: 'Space Mono', monospace !important;
+        color: #ffffff !important;
+        font-size: 0.75rem !important;
+        letter-spacing: 0.05em !important;
+        text-transform: lowercase !important;
+    }
+    
+    /* Multiselect pills - RED like screenshot */
+    [data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] {
+        background-color: #ff4444 !important;
+        color: #ffffff !important;
+        border-radius: 4px !important;
+        font-family: 'Space Mono', monospace !important;
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+    }
+    
+    /* Slider in sidebar - RED */
+    [data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [role="slider"] {
+        background-color: #ff4444 !important;
+    }
+    
+    [data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"] {
+        color: #ffffff !important;
+        font-family: 'Space Mono', monospace !important;
+    }
+    
+    /* Main content fonts */
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Space Mono', monospace !important;
         color: #000000 !important;
@@ -55,34 +89,34 @@ st.markdown("""
     }
     
     h1 {
-        font-size: 1.8rem !important;
+        font-size: 2rem !important;
         margin-bottom: 0.3rem !important;
     }
     
     h2 {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important;
         margin-top: 2rem !important;
-        margin-bottom: 1rem !important;
+        margin-bottom: 1.5rem !important;
     }
     
     h3 {
-        font-size: 1rem !important;
+        font-size: 0.9rem !important;
     }
     
-    /* Body text - dot matrix style */
-    p, label, .stMarkdown {
+    /* Body text */
+    p, label, .stMarkdown, div {
         font-family: 'Space Mono', monospace !important;
-        color: #333333 !important;
-        font-size: 0.85rem !important;
-        letter-spacing: 0.05em !important;
+        color: #000000 !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.03em !important;
         font-weight: 400 !important;
     }
     
-    /* Metrics - minimalist numbers */
+    /* Metrics */
     [data-testid="stMetricValue"] {
         font-family: 'Space Mono', monospace !important;
         color: #000000 !important;
-        font-size: 2.5rem !important;
+        font-size: 1.8rem !important;
         font-weight: 400 !important;
     }
     
@@ -91,35 +125,16 @@ st.markdown("""
         color: #666666 !important;
         font-size: 0.7rem !important;
         text-transform: lowercase !important;
-        letter-spacing: 0.1em !important;
+        letter-spacing: 0.08em !important;
         font-weight: 400 !important;
     }
     
     [data-testid="stMetricDelta"] {
         font-family: 'Space Mono', monospace !important;
-        font-size: 0.75rem !important;
+        font-size: 0.7rem !important;
     }
     
-    /* Buttons - minimal outline */
-    .stButton>button {
-        font-family: 'Space Mono', monospace !important;
-        background-color: transparent !important;
-        color: #000000 !important;
-        border: 1px solid #000000 !important;
-        border-radius: 0px !important;
-        padding: 8px 24px !important;
-        font-size: 0.75rem !important;
-        letter-spacing: 0.1em !important;
-        text-transform: lowercase !important;
-        transition: all 0.2s !important;
-    }
-    
-    .stButton>button:hover {
-        background-color: #000000 !important;
-        color: #ffffff !important;
-    }
-    
-    /* Tabs - minimal underline */
+    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 0px;
         background-color: transparent;
@@ -133,7 +148,7 @@ st.markdown("""
         border: none;
         padding: 12px 20px;
         font-size: 0.75rem;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.08em;
         text-transform: lowercase;
         border-bottom: 2px solid transparent;
     }
@@ -146,67 +161,49 @@ st.markdown("""
     /* Dataframes */
     .dataframe {
         font-family: 'Space Mono', monospace !important;
-        font-size: 0.75rem !important;
+        font-size: 0.7rem !important;
         border: 1px solid #e0e0e0 !important;
     }
     
-    /* Expander */
-    .streamlit-expanderHeader {
-        font-family: 'Space Mono', monospace !important;
-        background-color: #ffffff;
-        color: #000000;
-        border: 1px solid #e0e0e0;
-        border-radius: 0px;
-        font-size: 0.85rem;
-        letter-spacing: 0.05em;
-    }
-    
     /* Info boxes */
-    .stAlert {
+    .stSuccess {
         font-family: 'Space Mono', monospace !important;
-        background-color: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 0px;
-        font-size: 0.75rem;
+        background-color: #e8f5e9 !important;
+        border: 1px solid #4caf50 !important;
+        border-radius: 4px !important;
+        color: #000000 !important;
+        font-size: 0.75rem !important;
     }
     
-    /* Slider */
-    .stSlider {
+    .stInfo {
         font-family: 'Space Mono', monospace !important;
+        background-color: #ffffff !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 4px !important;
+        color: #000000 !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .stWarning {
+        font-family: 'Space Mono', monospace !important;
+        background-color: #fff3e0 !important;
+        border: 1px solid #ff9800 !important;
+        border-radius: 4px !important;
+        color: #000000 !important;
+        font-size: 0.75rem !important;
     }
     
     /* Divider */
     hr {
         border: none;
         border-top: 1px solid #e0e0e0;
-        margin: 2rem 0;
+        margin: 2.5rem 0;
     }
     
-    /* Remove padding */
+    /* Padding */
     .block-container {
-        padding-top: 1rem;
+        padding-top: 2rem;
         padding-bottom: 1rem;
-    }
-    
-    /* Dots pattern overlay (subtle) */
-    .stApp::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle, #d0d0d0 1px, transparent 1px);
-        background-size: 40px 40px;
-        opacity: 0.3;
-        pointer-events: none;
-        z-index: 0;
-    }
-    
-    /* Ensure content is above pattern */
-    [data-testid="stAppViewContainer"] > .main {
-        position: relative;
-        z-index: 1;
     }
     </style>
 """, unsafe_allow_html=True)
